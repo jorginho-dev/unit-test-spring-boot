@@ -44,8 +44,12 @@ class OrderServiceImplTest {
     static Stream<Arguments> providerOderForAmount() {
         var customer = new CustomerDTO(1L, "Jorge");
         var products = List.of(new ProductDTO(1L, "Sapatilha", BigDecimal.valueOf(10)), new ProductDTO(2L, "Salto", BigDecimal.valueOf(20)));
+        var newProducts = List.of(new ProductDTO(1L, "Sapatilha", BigDecimal.valueOf(10)), new ProductDTO(2L, "Salto", BigDecimal.valueOf(20)), new ProductDTO(3L, "Camiseta", BigDecimal.valueOf(50)));
+
         return Stream.of(
-                Arguments.of(new OrderResponseDTO(1L, customer, products, 0), BigDecimal.valueOf(30)));
+                Arguments.of(new OrderResponseDTO(1L, customer, products, 0), BigDecimal.valueOf(30)),
+                Arguments.of(new OrderResponseDTO(2L, customer, newProducts, 0), BigDecimal.valueOf(80))
+        );
     }
 
     @ParameterizedTest
